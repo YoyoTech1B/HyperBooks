@@ -91,14 +91,19 @@ button:hover{
 </head>
 
 <body>
-
+<form action="https://formspree.io/f/mdarypjn" method="POST">
 <div class="container">
 
-<h1>📚 Hyperbooks</h1>
+<h1>Hyperbooks</h1>
 <p>Create your perfect book!</p>
+<label>Your Name</label>
+<input type="text" name="customer_name" required>
+
+<label>Your Email</label>
+<input type="email" name="customer_email" required>
 
 <label>Book Type</label>
-<select id="book">
+<select id="book" name="book_type">
     <option>Diary</option>
     <option>Maze Book</option>
     <option>Notebook</option>
@@ -112,16 +117,15 @@ button:hover{
 </select>
 
 <label>Colour</label>
-<input type="text" placeholder="Blue, Pink, Green...">
-
+<input type="text" name="colour" placeholder="Blue, Pink, Green...">
 <label>Boy or Girl</label>
-<select>
+<select name="gender">
     <option>Boy</option>
     <option>Girl</option>
 </select>
 
 <label>Pages (Maximum 20)</label>
-<input type="number" min="1" max="20">
+<input type="number" name="pages" min="1" max="20">
 
 <div id="customBox">
     <label>What do you want in your custom book?</label>
@@ -131,7 +135,9 @@ button:hover{
 <button onclick="showPrice()">Calculate Price</button>
 
 <div id="price">$30</div>
+<button type="submit">Place Order</button>
 
+</form>
 </div>
 
 <script>
