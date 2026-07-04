@@ -1,1 +1,164 @@
-<h1>Hello Hyperbooks!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hyperbooks</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    margin-top:20px;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    margin-top:8px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    margin-top:30px;
+    padding:15px;
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e6395c;
+}
+
+#customBox{
+    display:none;
+}
+
+#price{
+    text-align:center;
+    margin-top:20px;
+    font-size:24px;
+    color:#ff4d6d;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📚 Hyperbooks</h1>
+<p>Create your perfect book!</p>
+
+<label>Book Type</label>
+<select id="book">
+    <option>Diary</option>
+    <option>Maze Book</option>
+    <option>Notebook</option>
+    <option>Colouring Book</option>
+    <option>Drawing Book</option>
+    <option>Workbook</option>
+    <option>Memory Book</option>
+    <option>Picture Book</option>
+    <option>Chore Book</option>
+    <option>Custom Book</option>
+</select>
+
+<label>Colour</label>
+<input type="text" placeholder="Blue, Pink, Green...">
+
+<label>Boy or Girl</label>
+<select>
+    <option>Boy</option>
+    <option>Girl</option>
+</select>
+
+<label>Pages (Maximum 20)</label>
+<input type="number" min="1" max="20">
+
+<div id="customBox">
+    <label>What do you want in your custom book?</label>
+    <textarea rows="5"></textarea>
+</div>
+
+<button onclick="showPrice()">Calculate Price</button>
+
+<div id="price">$30</div>
+
+</div>
+
+<script>
+const book = document.getElementById("book");
+const customBox = document.getElementById("customBox");
+
+book.addEventListener("change", function(){
+
+    if(book.value === "Custom Book"){
+        customBox.style.display = "block";
+    }else{
+        customBox.style.display = "none";
+    }
+});
+
+function showPrice(){
+
+    let total = 30;
+
+    if(book.value === "Custom Book"){
+        total = 50;
+    }
+
+    document.getElementById("price").innerHTML =
+    "Price: $" + total;
+}
+</script>
+
+</body>
+</html>
