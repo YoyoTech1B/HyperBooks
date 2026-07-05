@@ -137,7 +137,11 @@ button:hover{
 
 <div id="customBox">
     <label>What do you want in your custom book?</label>
-<textarea name="custom_request" rows="5"></textarea>
+<textarea
+  name="custom_request"
+  rows="5"
+  placeholder="Describe your custom book here..."
+></textarea>
 </div>
 
 <div id="price">$30</div>
@@ -153,12 +157,19 @@ const customBox = document.getElementById("customBox");
 function updatePrice() {
     let total = 30;
 
-    if (book.value === "Custom Book") {
-        total = 50;
-        customBox.style.display = "block";
-    } else {
-        customBox.style.display = "none";
-    }
+const customText = document.querySelector(
+  'textarea[name="custom_request"]'
+);
+
+if (book.value === "Custom Book") {
+    total = 50;
+    customBox.style.display = "block";
+    customText.required = true;
+} else {
+    customBox.style.display = "none";
+    customText.required = false;
+    customText.value = "";
+}
 
     document.getElementById("price").innerHTML =
         "Price: $" + total;
