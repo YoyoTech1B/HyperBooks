@@ -143,26 +143,22 @@ button:hover{
 const book = document.getElementById("book");
 const customBox = document.getElementById("customBox");
 
-book.addEventListener("change", function(){
-
-    if(book.value === "Custom Book"){
-        customBox.style.display = "block";
-    }else{
-        customBox.style.display = "none";
-    }
-});
-
-function showPrice(){
-
+function updatePrice() {
     let total = 30;
 
-    if(book.value === "Custom Book"){
+    if (book.value === "Custom Book") {
         total = 50;
+        customBox.style.display = "block";
+    } else {
+        customBox.style.display = "none";
     }
 
     document.getElementById("price").innerHTML =
-    "Price: $" + total;
+        "Price: $" + total;
 }
+
+book.addEventListener("change", updatePrice);
+updatePrice();
 </script>
 
 </body>
